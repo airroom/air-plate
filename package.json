@@ -1,0 +1,49 @@
+{
+  "name": "air-plate",
+  "version": "0.0.1",
+  "description": "Angular.js, Bootstrap 4, Browserify e Gulp boilerplate",
+  "main": " ",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
+    "start:dev": "gulp dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airroom/air-plate.git"
+  },
+  "keywords": [
+    "angular.js",
+    "browserify",
+    "bootstrap 4",
+    "gulp"
+  ],
+  "author": "Romário S. Lima <me@romar.io>",
+  "license": "BEER-WARE",
+  "bugs": {
+    "url": "https://github.com/airroom/air-plate/issues"
+  },
+  "homepage": "https://github.com/airroom/air-plate#readme",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-router": "^0.2.17",
+    "babel-cli": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "browserify-ngannotate": "^2.0.0",
+    "bulkify": "^1.1.1",
+    "del": "^2.2.0",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.1",
+    "require-dir": "^0.3.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "watchify": "^3.7.0"
+  }
+}
