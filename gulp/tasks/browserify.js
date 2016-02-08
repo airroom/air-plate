@@ -3,11 +3,12 @@
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
+import gulpIf from 'gulp-if';
 import browserify from 'browserify';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
-import showError from '../util/show-error.js';
+import handleError from '../util/handle-error.js';
 import bundleLogger from '../util/bundle-logger.js';
 
 const BROWSERIFY_TRANSFORMS = [
@@ -16,56 +17,44 @@ const BROWSERIFY_TRANSFORMS = [
   {'name': 'bulkify', 'options': {} }
 ];
 
-gulp.task('browserify:watch', browserifyWatch);
-gulp.task('browserify:build', browserifyBuild);
+gulp.task('browserify', browserifyTask);
 
-function browserifyWatch() {
+function browserifyTask() {
   let bundler = browserify({
     entries: ['./app/js/index.js'],
-    debug: true,
+    debug: !global.isProd,
     cache: {},
     packageCache: {},
-    fullPaths: true
+    fullPaths: !global.isProd
   });
-  bundler = watchify(bundler);
 
   BROWSERIFY_TRANSFORMS.forEach((transform) => bundler.transform(transform.name, transform.options));
 
-  bundler.on('update', function watchifyUpdate() {
-    bundleLogger.start();
-    rebundle();
-    bundleLogger.end();
-  });
+  if (!global.isProd) {
+    bundler = watchify(bundler);
+
+    bundler.on('update', function watchifyOnUpdate() {
+      bundleLogger.start();
+      rebundle();
+      bundleLogger.end();
+    });
+  } else {
+    bundler.plugin('bundle-collapser/plugin');
+  }
 
   return rebundle();
 
   function rebundle() {
-    return bundler
-    .bundle()
-    .on('error', showError)
+    return bundler.bundle()
+    .on('error', function browserifyOnError(e) {
+      e.plugin = 'browserify';
+      handleError.call(this, e);
+    })
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(sourcemaps.write())
+    .pipe(gulpIf(!global.isProd, sourcemaps.init({ loadMaps: true })))
+    .pipe(gulpIf(!global.isProd, sourcemaps.write()))
+    .pipe(gulpIf(global.isProd, uglify({ compress: { drop_console: true } })))
     .pipe(gulp.dest('./build/js'));
   }
-}
-
-function browserifyBuild() {
-  let bundler = browserify({
-    entries: ['./app/js/index.js'],
-    debug: false,
-    fullPaths: false
-  });
-
-  BROWSERIFY_TRANSFORMS.forEach((transform) => bundler.transform(transform.name, transform.options));
-
-  return bundler
-  .plugin('bundle-collapser/plugin')
-  .bundle()
-  .on('error', showError)
-  .pipe(source('app.js'))
-  .pipe(buffer())
-  .pipe(uglify({ compress: { drop_console: true } }))
-  .pipe(gulp.dest('./build/js'));
 }
