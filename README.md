@@ -4,4 +4,4 @@ Boilerplate de apps utilizando `Angular.js 1.x`, `Bootstrap 4`, `Browserify` e `
 
 ## Licença
 
-[BEER-WARE](LICENSE.md)
+[BEER-WARE](LICENSE)

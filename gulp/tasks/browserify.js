@@ -2,6 +2,7 @@
 
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
+import uglify from 'gulp-uglify';
 import browserify from 'browserify';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
@@ -16,6 +17,7 @@ const BROWSERIFY_TRANSFORMS = [
 ];
 
 gulp.task('browserify:watch', browserifyWatch);
+gulp.task('browserify:build', browserifyBuild);
 
 function browserifyWatch() {
   let bundler = browserify({
@@ -47,4 +49,23 @@ function browserifyWatch() {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/js'));
   }
+}
+
+function browserifyBuild() {
+  let bundler = browserify({
+    entries: ['./app/js/index.js'],
+    debug: false,
+    fullPaths: false
+  });
+
+  BROWSERIFY_TRANSFORMS.forEach((transform) => bundler.transform(transform.name, transform.options));
+
+  return bundler
+  .plugin('bundle-collapser/plugin')
+  .bundle()
+  .on('error', showError)
+  .pipe(source('app.js'))
+  .pipe(buffer())
+  .pipe(uglify({ compress: { drop_console: true } }))
+  .pipe(gulp.dest('./build/js'));
 }

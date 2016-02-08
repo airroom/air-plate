@@ -6,6 +6,7 @@
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "start:dev": "gulp dev",
+    "build": "gulp build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -33,6 +34,7 @@
     "browserify": "^13.0.0",
     "browserify-ngannotate": "^2.0.0",
     "bulkify": "^1.1.1",
+    "bundle-collapser": "^1.2.1",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-notify": "^2.2.0",
@@ -41,9 +43,7 @@
     "pretty-hrtime": "^1.0.1",
     "require-dir": "^0.3.0",
     "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
-  },
-  "devDependencies": {
+    "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
   }
 }
