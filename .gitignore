@@ -16,4 +16,4 @@ node_modules
 *.subl*
 
 # Pasta de distribuição
-dist/
+build/

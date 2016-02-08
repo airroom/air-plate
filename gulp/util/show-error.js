@@ -2,11 +2,7 @@
 
 import notify from 'gulp-notify';
 
-export default {
-  showError
-};
-
-function showError(e) {
+export default function showError(error) {
   let args = Array.prototype.slice.call(arguments);
   notify.onError({
     title: '<%= error.plugin %>',

@@ -1,0 +1,19 @@
+'use strict';
+
+import gutil from 'gulp-util';
+import prettyHrtime from 'pretty-hrtime';
+
+let startTime;
+
+export default {
+  start() {
+    startTime = process.hrtime();
+    gutil.log(gutil.colors.green('Bundling'), '...');
+  },
+
+  end() {
+    let taskTime = process.hrtime(startTime);
+    let prettyTime = prettyHrtime(taskTime);
+    gutil.log(gutil.colors.green('Bundled'), 'in', gutil.colors.magenta(prettyTime));
+  }
+};

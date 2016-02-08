@@ -1,14 +1,13 @@
 'use strict';
 
 import gulp from 'gulp';
-import util from '../util';
+import sourcemaps from 'gulp-sourcemaps';
 import browserify from 'browserify';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
-import gulpLoadPlugins from 'gulp-load-plugins';
-
-const $ = gulpLoadPlugins();
+import showError from '../util/show-error.js';
+import bundleLogger from '../util/bundle-logger.js';
 
 const BROWSERIFY_TRANSFORMS = [
   {'name': 'babelify', 'options': {} },
@@ -24,15 +23,16 @@ function browserifyWatch() {
     debug: true,
     cache: {},
     packageCache: {},
-    fullPaths: false
+    fullPaths: true
   });
   bundler = watchify(bundler);
 
   BROWSERIFY_TRANSFORMS.forEach((transform) => bundler.transform(transform.name, transform.options));
 
   bundler.on('update', function watchifyUpdate() {
-    console.log('... rebundled');
+    bundleLogger.start();
     rebundle();
+    bundleLogger.end();
   });
 
   return rebundle();
@@ -40,12 +40,11 @@ function browserifyWatch() {
   function rebundle() {
     return bundler
     .bundle()
-    .on('error', util.showError)
+    .on('error', showError)
     .pipe(source('app.js'))
     .pipe(buffer())
-    .pipe($.sourcemaps.init( {loadMaps: true }))
-    .pipe($.sourcemaps.write())
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./build/js'));
   }
-
 }
