@@ -14,6 +14,7 @@ function devTask() {
   global.isProd = false;
   return gulp.series(
     'clean:build',
+    'views',
     'browserify'
   ).apply(this, arguments);
 }
@@ -22,6 +23,7 @@ function buildTask() {
   global.isProd = true;
   return gulp.series(
     'clean:build',
+    'views',
     'browserify'
   ).apply(this, arguments);
 }

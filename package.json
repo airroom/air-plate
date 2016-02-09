@@ -1,8 +1,7 @@
 {
   "name": "air-plate",
   "version": "0.0.1",
-  "description": "Angular.js, PostCSS, Browserify e Gulp boilerplate",
-  "main": " ",
+  "description": "Boilerplate de Angular.js 1.x, Boostrap 4, Browserify e Gulp",
   "scripts": {
     "gulp": "./node_modules/.bin/gulp",
     "start:dev": "gulp dev",
@@ -16,11 +15,11 @@
   "keywords": [
     "angular.js",
     "browserify",
-    "postcss",
+    "bootstrap",
     "gulp"
   ],
   "author": "Romário S. Lima <me@romar.io>",
-  "license": "BEER-WARE",
+  "license": "Beerware",
   "bugs": {
     "url": "https://github.com/airroom/air-plate/issues"
   },
@@ -37,6 +36,7 @@
     "bundle-collapser": "^1.2.1",
     "del": "^2.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-angular-templatecache": "^1.8.0",
     "gulp-if": "^2.0.0",
     "gulp-notify": "^2.2.0",
     "gulp-sourcemaps": "^1.6.0",

@@ -15,5 +15,8 @@ node_modules
 # Sublime Text Files
 *.subl*
 
-# Pasta de distribuição
+# Compiled folder
 build/
+
+# Temp Files
+templates.js

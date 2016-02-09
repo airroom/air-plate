@@ -1,3 +1,2 @@
-'use strict';
-
 import angular from 'angular';
+import './templates.js';
