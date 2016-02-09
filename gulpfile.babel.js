@@ -15,7 +15,8 @@ function devTask() {
   return gulp.series(
     'clean:build',
     'views',
-    'browserify'
+    'browserify',
+    'watch'
   ).apply(this, arguments);
 }
 
