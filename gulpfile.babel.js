@@ -15,7 +15,7 @@ function devTask() {
   return gulp.series(
     'clean',
     'views',
-    gulp.parallel('browserify', 'styles'),
+    gulp.parallel('browserify', 'styles', 'images'),
     gulp.parallel('watch', 'browserSync')
   ).apply(this, arguments);
 }
@@ -25,6 +25,6 @@ function buildTask() {
   return gulp.series(
     'clean',
     'views',
-    gulp.parallel('browserify', 'styles')
+    gulp.parallel('browserify', 'styles', 'images')
   ).apply(this, arguments);
 }
