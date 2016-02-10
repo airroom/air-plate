@@ -12,9 +12,7 @@ gulp.task(styles);
 
 function styles() {
   return gulp.src('./app/styles/**/*.scss')
-  .pipe(plumber({
-    errorHandler
-  }))
+  .pipe(plumber({ errorHandler }))
   .pipe(gulpIf(!global.isProd, sourcemaps.init()))
   .pipe(sass({
     sourceComments: !global.isProd,
