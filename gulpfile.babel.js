@@ -13,7 +13,7 @@ gulp.task('build', buildTask);
 function devTask() {
   global.isProd = false;
   return gulp.series(
-    'clean:build',
+    'clean',
     'views',
     'browserify',
     gulp.parallel('watch', 'browserSync')
@@ -23,7 +23,7 @@ function devTask() {
 function buildTask() {
   global.isProd = true;
   return gulp.series(
-    'clean:build',
+    'clean',
     'views',
     'browserify'
   ).apply(this, arguments);

@@ -3,8 +3,8 @@
 import gulp from 'gulp';
 import del from 'del';
 
-gulp.task('clean:build', cleanBuild);
+gulp.task(clean);
 
-function cleanBuild() {
+function clean() {
   return del(['build']);
 }
