@@ -3,6 +3,7 @@
 import gulp from 'gulp'
 import htmlmin from 'gulp-htmlmin';
 import templateCache from 'gulp-angular-templatecache';
+import bs from 'browser-sync';
 import handleError from '../util/handle-error.js';
 
 gulp.task('views', gulp.parallel(index, angularViews));
@@ -13,7 +14,8 @@ function index() {
     collapseWhitespace: true,
     removeComments: false
   }))
-  .pipe(gulp.dest('./build'));
+  .pipe(gulp.dest('./build'))
+  .pipe(bs.stream());
 }
 
 function angularViews() {
@@ -22,5 +24,6 @@ function angularViews() {
   .pipe(templateCache({
     standalone: true
   }))
-  .pipe(gulp.dest('./app/js'));
+  .pipe(gulp.dest('./app/js'))
+  .pipe(bs.stream());
 }

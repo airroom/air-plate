@@ -5,6 +5,7 @@ import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpIf from 'gulp-if';
 import browserify from 'browserify';
+import bs from 'browser-sync';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
@@ -55,6 +56,7 @@ function browserifyTask() {
     .pipe(gulpIf(!global.isProd, sourcemaps.init({ loadMaps: true })))
     .pipe(gulpIf(!global.isProd, sourcemaps.write()))
     .pipe(gulpIf(global.isProd, uglify({ compress: { drop_console: true } })))
-    .pipe(gulp.dest('./build/js'));
+    .pipe(gulp.dest('./build/js'))
+    .pipe(bs.stream());
   }
 }
