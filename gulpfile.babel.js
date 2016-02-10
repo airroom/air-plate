@@ -16,7 +16,7 @@ function devTask() {
     'clean:build',
     'views',
     'browserify',
-    'watch'
+    gulp.parallel('watch', 'browserSync')
   ).apply(this, arguments);
 }
 
