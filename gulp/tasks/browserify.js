@@ -1,5 +1,6 @@
 'use strict';
 
+import config from '../config.js';
 import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
@@ -22,7 +23,7 @@ gulp.task('browserify', browserifyTask);
 
 function browserifyTask() {
   let bundler = browserify({
-    entries: ['./app/js/index.js'],
+    entries: config.scripts.browserify.entries,
     debug: !global.isProd,
     cache: {},
     packageCache: {},
@@ -51,12 +52,12 @@ function browserifyTask() {
       e.plugin = 'browserify';
       errorHandler.call(this, e);
     })
-    .pipe(source('app.js'))
+    .pipe(source(config.scripts.browserify.fileName))
     .pipe(buffer())
     .pipe(gulpIf(!global.isProd, sourcemaps.init({ loadMaps: true })))
     .pipe(gulpIf(!global.isProd, sourcemaps.write()))
     .pipe(gulpIf(global.isProd, uglify({ compress: { drop_console: true } })))
-    .pipe(gulp.dest('./build/js'))
+    .pipe(gulp.dest(config.scripts.dest))
     .pipe(bs.stream());
   }
 }
