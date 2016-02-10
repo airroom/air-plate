@@ -6,5 +6,5 @@ import del from 'del';
 gulp.task(clean);
 
 function clean() {
-  return del(['build']);
+  return del(['./build']);
 }
