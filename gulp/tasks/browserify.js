@@ -9,7 +9,7 @@ import bs from 'browser-sync';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
 import source from 'vinyl-source-stream';
-import handleError from '../util/handle-error.js';
+import errorHandler from '../util/error-handler.js';
 import bundleLogger from '../util/bundle-logger.js';
 
 const BROWSERIFY_TRANSFORMS = [
@@ -49,7 +49,7 @@ function browserifyTask() {
     return bundler.bundle()
     .on('error', function browserifyOnError(e) {
       e.plugin = 'browserify';
-      handleError.call(this, e);
+      errorHandler.call(this, e);
     })
     .pipe(source('app.js'))
     .pipe(buffer())

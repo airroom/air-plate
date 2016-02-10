@@ -2,9 +2,7 @@
 
 import notify from 'gulp-notify';
 
-export default function handleError(error) {
-  let args = Array.prototype.slice.call(arguments);
-
+export default function errorHandler(error) {
   if (global.isProd) {
     console.log(error.message);
     process.exit(1);
@@ -14,6 +12,6 @@ export default function handleError(error) {
   notify.onError({
     title: '<%= error.plugin %>',
     message: '<%= error.message %>'
-  }).apply(this, arguments);
+  }).call(this, error);
   this.emit('end');
 }
