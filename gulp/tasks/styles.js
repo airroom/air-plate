@@ -1,5 +1,6 @@
 'use strict';
 
+import config from '../config.js'
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import sass from 'gulp-sass';
@@ -19,15 +20,16 @@ const processors = [
 gulp.task(styles);
 
 function styles() {
-  return gulp.src('./app/styles/**/*.scss')
+  return gulp.src(config.styles.src)
   .pipe(plumber({ errorHandler }))
   .pipe(gulpIf(!global.isProd, sourcemaps.init()))
   .pipe(sass({
     sourceComments: !global.isProd,
     outputStyle: global.isProd ? 'compressed' : 'nested',
+    includePaths: config.styles.sassIncludePaths
   }))
   .pipe(postcss(processors))
   .pipe(gulpIf(!global.isProd, sourcemaps.write()))
-  .pipe(gulp.dest('./build/css'))
+  .pipe(gulp.dest(config.styles.dest))
   .pipe(bs.stream());
 }
