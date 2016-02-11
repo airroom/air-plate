@@ -1,11 +1,13 @@
 'use strict';
 
+import config from '../config.js';
 import gulp from 'gulp';
 
 gulp.task(watch);
 
 function watch() {
-  gulp.watch('./app/**/*.html', gulp.series('views'));
-  gulp.watch('./app/styles/**/*.scss', gulp.series('styles'));
-  gulp.watch('./app/images/**/*', gulp.series('images'));
+  gulp.watch([config.views.index, config.views.angular.src], gulp.series('views'));
+  gulp.watch(config.styles.src, gulp.series('styles'));
+  gulp.watch(config.images.src, gulp.series('images'));
+  gulp.watch(config.fonts.src, gulp.series('fonts'));
 }
