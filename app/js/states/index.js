@@ -5,8 +5,6 @@ const statesModule = angular.module('app.states', []);
 
 statesModule.config(statesModuleConfig);
 
-export default statesModule;
-
 function statesModuleConfig($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.when('', '/');
 
