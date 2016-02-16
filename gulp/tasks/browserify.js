@@ -15,8 +15,8 @@ import bundleLogger from '../util/bundle-logger.js';
 
 const BROWSERIFY_TRANSFORMS = [
   {'name': 'babelify', 'options': {} },
-  {'name': 'browserify-ngannotate', 'options': {} },
-  {'name': 'bulkify', 'options': {} }
+  {'name': 'bulkify', 'options': {} },
+  {'name': 'browserify-ngannotate', 'options': {} }
 ];
 
 gulp.task('browserify', browserifyTask);
