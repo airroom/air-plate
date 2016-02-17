@@ -5,8 +5,8 @@ export default {
   fn: ngBindCustom
 };
 
+/*@ngInject*/
 function ngBindCustom($compile) {
-  'ngInject';
 
   return {
     restrict: 'AC',

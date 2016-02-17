@@ -18,8 +18,8 @@ angular.bootstrap(document, ['app'], {
   strictDi: true
 });
 
+/*@ngInject*/
 function appRun($rootScope, App) {
-  'ngInject';
 
   $rootScope.App = App;
 }

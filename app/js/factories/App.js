@@ -5,8 +5,8 @@ export default {
   fn: App
 };
 
+/*@ngInject*/
 function App($state) {
-  'ngInject';
 
   const app = {
     state: {
