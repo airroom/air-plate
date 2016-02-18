@@ -1,3 +1,4 @@
+import './bootstrap-custom';
 import angular from 'angular';
 import 'angular-ui-router';
 
@@ -20,6 +21,5 @@ angular.bootstrap(document, ['app'], {
 
 /*@ngInject*/
 function appRun($rootScope, App) {
-
   $rootScope.App = App;
 }

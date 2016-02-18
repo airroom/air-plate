@@ -24,7 +24,14 @@
     "url": "https://github.com/airroom/air-plate/issues"
   },
   "homepage": "https://github.com/airroom/air-plate#readme",
+  "browser": {
+    "jquery": "./app/js/vendor/jquery.js"
+  },
+  "browserify-shim": {
+    "jquery": "jQuery"
+  },
   "dependencies": {
+    "aliasify": "^1.9.0",
     "angular": "^1.5.0",
     "angular-ui-router": "^0.2.18",
     "autoprefixer": "^6.3.1",
@@ -36,6 +43,7 @@
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
     "browserify-ngannotate": "^2.0.0",
+    "browserify-shim": "^3.8.12",
     "bulk-require": "^0.2.1",
     "bulkify": "^1.1.1",
     "bundle-collapser": "^1.2.1",
@@ -56,6 +64,7 @@
     "morgan": "^1.6.1",
     "pretty-hrtime": "^1.0.1",
     "require-dir": "^0.3.0",
+    "tether": "^1.1.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"

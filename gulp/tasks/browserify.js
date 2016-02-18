@@ -13,8 +13,16 @@ import source from 'vinyl-source-stream';
 import errorHandler from '../util/error-handler.js';
 import bundleLogger from '../util/bundle-logger.js';
 
+const BOOTSTRAP_UMD_FOLDER = './node_modules/bootstrap/dist/js/umd/';
+
 const BROWSERIFY_TRANSFORMS = [
-  {'name': 'babelify', 'options': {} },
+  {'name': 'babelify', 'options': { compact: false } },
+  {'name': 'browserify-shim', 'options': {} },
+  {'name': 'aliasify', 'options': {
+    replacements: {
+      'bootstrap/(\\w+)': `${BOOTSTRAP_UMD_FOLDER}$1.js`
+    }
+  }},
   {'name': 'bulkify', 'options': {} },
   {'name': 'browserify-ngannotate', 'options': {} }
 ];
