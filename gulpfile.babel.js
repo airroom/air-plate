@@ -7,10 +7,10 @@ requireDir('./gulp/tasks');
 
 global.isProd = process.env.NODE_ENV === 'production'; // Case you want to run an isolated task
 
-gulp.task('dev', devTask);
-gulp.task('build', buildTask);
+gulp.task(dev);
+gulp.task(build);
 
-function devTask() {
+function dev() {
   global.isProd = false;
   return gulp.series(
     'clean',
@@ -20,7 +20,7 @@ function devTask() {
   ).apply(this, arguments);
 }
 
-function buildTask() {
+function build() {
   global.isProd = true;
   return gulp.series(
     'clean',

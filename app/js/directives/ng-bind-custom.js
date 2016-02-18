@@ -7,7 +7,6 @@ export default {
 
 /*@ngInject*/
 function ngBindCustom($compile) {
-
   return {
     restrict: 'AC',
     compile: function ngBindCustomCompile(templateElement) {
