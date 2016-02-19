@@ -1,0 +1,37 @@
+@keyframes airPlateImg {
+    30% {
+      filter: blur(0px);
+    }
+
+    50% {
+      filter: blur(2px);
+    }
+
+    70% {
+      filter: blur(0px);
+    }
+
+     80% {
+      filter: blur(0px);
+    }
+
+
+    90% {
+      filter: blur(3px);
+    }
+
+
+   100% {
+      filter: blur(0px);
+    }
+  }
+
+.air-plate-img {
+  animation-name: airPlateImg;
+  animation-duration: 3s;
+  /* animation-delay: 3s; */
+  /* animation-direction: alternate; */
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  /* animation-fill-mode: forwards; */
+}
