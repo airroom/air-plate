@@ -7,7 +7,6 @@ export default {
 
 /*@ngInject*/
 function App($state) {
-
   const app = {
     state: {
       title: function title() {
