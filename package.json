@@ -6,7 +6,7 @@
     "gulp": "./node_modules/.bin/gulp",
     "start:dev": "gulp dev",
     "build": "gulp build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "url": "https://github.com/airroom/air-plate/issues"
   },
   "homepage": "https://github.com/airroom/air-plate#readme",
+  "aliasify": "./gulp/aliasify.config.js",
   "browser": {
     "jquery": "./app/js/vendor/jquery.js"
   },
@@ -68,5 +69,20 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.7.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.0",
+    "browserify-istanbul": "^0.2.1",
+    "isparta": "^4.0.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.21",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-browserify": "^5.0.1",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.7",
+    "karma-mocha-reporter": "^1.2.0",
+    "karma-sourcemap-loader": "^0.3.7"
   }
 }

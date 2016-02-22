@@ -9,6 +9,7 @@ global.isProd = process.env.NODE_ENV === 'production'; // Case you want to run a
 
 gulp.task(dev);
 gulp.task(build);
+gulp.task('test', gulp.series('unit'));
 
 function dev() {
   global.isProd = false;

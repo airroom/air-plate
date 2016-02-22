@@ -6,8 +6,8 @@ logs
 *.log
 npm-debug.log*
 
-# Coverage directory used by tools like istanbul
-coverage/
+# Test reports
+reports/
 
 # Dependency directory
 node_modules

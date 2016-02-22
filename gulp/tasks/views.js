@@ -12,6 +12,8 @@ import errorHandler from '../util/error-handler.js';
 
 gulp.task(views);
 
+export default views;
+
 function views() {
   const index = gulp.src(config.views.index)
   .pipe(changed(config.destDir))
