@@ -1,7 +1,6 @@
 'use strict';
 
 const istanbul = require('browserify-istanbul');
-const isparta = require('isparta');
 
 const karmaBaseConfig = {
   basePath: '../',
@@ -26,7 +25,6 @@ const karmaBaseConfig = {
       'bulkify',
       'browserify-ngannotate',
       istanbul({
-        // instrumenter: isparta,
         instrumenterConfig: { embedSource: true } // Workaround for HTML coverage reporter
       }),
     ]

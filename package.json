@@ -6,7 +6,8 @@
     "gulp": "./node_modules/.bin/gulp",
     "start:dev": "gulp dev",
     "build": "gulp build",
-    "test": "gulp test"
+    "test": "gulp test",
+    "test:dev": "gulp unit:dev"
   },
   "repository": {
     "type": "git",
