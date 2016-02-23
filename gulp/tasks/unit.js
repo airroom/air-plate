@@ -9,6 +9,7 @@ gulp.task('unit', gulp.series(views, karma));
 
 function karma() {
   new Server({
-    configFile: process.cwd() + '/test/karma.conf.js'
+    configFile: process.cwd() + '/test/karma.conf.js',
+    singleRun: true
   }).start();
 }

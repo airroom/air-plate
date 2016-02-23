@@ -17,13 +17,10 @@ const karmaBaseConfig = {
 
   reporters: ['mocha', 'coverage'],
 
-  singleRun: false,
-  autoWatch: true,
-
   browserify: {
     debug: true,
     transform: [
-      'babelify',
+      ['babelify', { compact: false }],
       'browserify-shim',
       'aliasify',
       'bulkify',
