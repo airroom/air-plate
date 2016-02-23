@@ -17,6 +17,18 @@
   "smarttabs": true,
   "newcap": false,
   "maxdepth": 3,
-  "maxcomplexity": 7
+  "maxcomplexity": 7,
+    "globals": {
+    "angular": false,
+    "define": false,
+    "jasmine": false,
+    "expect": false,
+    "beforeEach": false,
+    "afterEach": false,
+    "describe": false,
+    "inject": true,
+    "it": false,
+    "spyOn": false
+  }
 }
 
