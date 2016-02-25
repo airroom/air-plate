@@ -25,6 +25,8 @@ const karmaBaseConfig = {
       'bulkify',
       'browserify-ngannotate',
       istanbul({
+        ignore: ['**/js/vendor/**'],
+        defaultIgnore: true,
         instrumenterConfig: { embedSource: true } // Workaround for HTML coverage reporter
       }),
     ]
@@ -50,23 +52,8 @@ const karmaBaseConfig = {
   }
 };
 
-const customLaunchers = {
-  chrome: {
-    base: 'SauceLabs',
-    browserName: 'chrome'
-  }
-};
-
 const ciAdditions = {
-  sauceLabs: {
-    testName: 'Karma Unit Tests',
-    startConnect: false,
-    build: process.env.TRAVIS_BUILD_NUMBER,
-    tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
-  },
-  browsers: Object.keys(customLaunchers),
-  customLaunchers: customLaunchers,
-  reporters: ['progress', 'coverage', 'saucelabs']
+  browsers: ['Firefox']
 };
 
 module.exports = function (config) {
