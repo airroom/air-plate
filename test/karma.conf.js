@@ -25,6 +25,8 @@ const karmaBaseConfig = {
       'bulkify',
       'browserify-ngannotate',
       istanbul({
+        ignore: ['**/js/vendor/**'],
+        defaultIgnore: true,
         instrumenterConfig: { embedSource: true } // Workaround for HTML coverage reporter
       }),
     ]
