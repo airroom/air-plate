@@ -12,14 +12,14 @@ angular.module('app', [
   'templates',
   'app.states',
   'app.directives',
-  'app.factories'
+  'app.factories',
 ]).run(appRun);
 
 angular.bootstrap(document, ['app'], {
-  strictDi: true
+  strictDi: true,
 });
 
-/*@ngInject*/
+/* @ngInject */
 function appRun($rootScope, App) {
   $rootScope.App = App;
 }

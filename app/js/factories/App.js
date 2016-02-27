@@ -2,15 +2,15 @@ import SETTINGS from '../settings.js';
 
 export default {
   name: 'App',
-  fn: App
+  fn: App,
 };
 
-/*@ngInject*/
+/* @ngInject */
 function App($state) {
   const app = {
     state: {
       title: function title() {
-        let t = $state.current.data && $state.current.data.title
+        const t = $state.current.data && $state.current.data.title
                 ? $state.current.data.title
                 : SETTINGS.DEFAULT_TITLE;
 
@@ -20,8 +20,8 @@ function App($state) {
         return $state.current.data && $state.current.data.description
                ? $state.current.data.description
                : SETTINGS.DEFAULT_DESCRIPTION;
-      }
-    }
+      },
+    },
   };
 
   return app;

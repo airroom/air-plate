@@ -2,10 +2,10 @@ import angular from 'angular';
 
 export default {
   name: 'ngBindCustom',
-  fn: ngBindCustom
+  fn: ngBindCustom,
 };
 
-/*@ngInject*/
+/* @ngInject */
 function ngBindCustom($compile, $log) {
   return {
     restrict: 'AC',
@@ -17,11 +17,10 @@ function ngBindCustom($compile, $log) {
           return;
         }
         $compile.$$addBindingInfo(element, attr.ngBindCustom);
-        element = element[0];
-        scope.$watch(attr.ngBindCustom, function ngBindCustonWatchAction(value) {
-          element.setAttribute(attr.customAttr, angular.isUndefined(value) ? '' : value);
-        });
+        scope.$watch(attr.ngBindCustom, (value) =>
+          element[0].setAttribute(attr.customAttr, angular.isUndefined(value) ? '' : value)
+        );
       };
-    }
+    },
   };
 }
