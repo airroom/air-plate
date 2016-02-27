@@ -18,7 +18,10 @@ function lint() {
     defaultEncoding: 'utf8'
   });
 
-  return gulp.src([config.scripts.src, `!${config.sourceDir}/js/vendor/**/*`])
+  return gulp.src([config.scripts.src,
+    `!${config.sourceDir}/js/vendor/**/*`,
+    `!${config.sourceDir}/js/templates.js`
+  ])
   .pipe(eslint())
   .pipe(eslint.format('html', lintStream))
   .pipe(eslint.formatEach('stylish'))

@@ -55,6 +55,7 @@
     "bundle-collapser": "^1.2.1",
     "css-mqpacker": "^4.0.0",
     "del": "^2.2.0",
+    "eslint-config-airbnb": "^6.0.2",
     "eslint-plugin-babel": "^3.1.0",
     "eslint-plugin-filenames": "^0.2.0",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -82,7 +83,6 @@
   "devDependencies": {
     "angular-mocks": "^1.5.0",
     "browserify-istanbul": "^0.2.1",
-    "eslint-config-airbnb": "^6.0.2",
     "isparta": "^4.0.0",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.21",
