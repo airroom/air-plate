@@ -1,0 +1,7 @@
+---
+extends:
+  - "airbnb/base"
+
+rules:
+  "no-use-before-define": [2, {"functions": false}]
+  "strict": [2, "global"]
