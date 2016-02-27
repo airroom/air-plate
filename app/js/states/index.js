@@ -8,5 +8,7 @@ statesModule.config(statesModuleConfig);
 function statesModuleConfig($urlRouterProvider, $stateProvider) {
   $urlRouterProvider.when('', '/');
 
-  Object.keys(definitions).forEach((stateId) => $stateProvider.state(stateId, definitions[stateId]) );
+  Object.keys(definitions).forEach((stateId) =>
+    $stateProvider.state(stateId, definitions[stateId])
+  );
 }
