@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpIf from 'gulp-if';
-import browserify from 'browserify';
+import brfy from 'browserify';
 import bs from 'browser-sync';
 import watchify from 'watchify';
 import buffer from 'vinyl-buffer';
@@ -23,10 +23,10 @@ const BROWSERIFY_TRANSFORMS = [
   {'name': 'browserify-ngannotate', 'options': {} }
 ];
 
-gulp.task('browserify', browserifyTask);
+export default browserify;
 
-function browserifyTask() {
-  let bundler = browserify({
+function browserify() {
+  let bundler = brfy({
     entries: config.scripts.browserify.entries,
     debug: !global.isProd,
     cache: {},
@@ -34,7 +34,9 @@ function browserifyTask() {
     fullPaths: !global.isProd
   });
 
-  BROWSERIFY_TRANSFORMS.forEach((transform) => bundler.transform(transform.name, transform.options));
+  BROWSERIFY_TRANSFORMS.forEach((transform) =>
+    bundler.transform(transform.name, transform.options)
+  );
 
   if (!global.isProd) {
     bundler = watchify(bundler);

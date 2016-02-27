@@ -10,8 +10,6 @@ import merge from 'merge-stream';
 import bs from 'browser-sync';
 import errorHandler from '../util/error-handler.js';
 
-gulp.task(views);
-
 export default views;
 
 function views() {

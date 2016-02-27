@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import changed from 'gulp-changed';
 import bs from 'browser-sync';
 
-gulp.task(fonts);
+export default fonts;
 
 function fonts() {
   return gulp.src(config.fonts.src)

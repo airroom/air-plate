@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import bs from 'browser-sync';
 import morgan from 'morgan';
 
-gulp.task(browserSync);
+export default browserSync;
 
 function browserSync(cb) {
   bs.init({
