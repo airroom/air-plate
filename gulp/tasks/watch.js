@@ -2,12 +2,16 @@
 
 import config from '../config.js';
 import gulp from 'gulp';
+import views from './views.js';
+import styles from './styles.js';
+import images from './images.js';
+import fonts from './fonts.js';
 
-gulp.task(watch);
+export default watch;
 
 function watch() {
-  gulp.watch([config.views.index, config.views.angular.src], gulp.series('views'));
-  gulp.watch(config.styles.src, gulp.series('styles'));
-  gulp.watch(config.images.src, gulp.series('images'));
-  gulp.watch(config.fonts.src, gulp.series('fonts'));
+  gulp.watch([config.views.index, config.views.angular.src], views);
+  gulp.watch(config.styles.src, styles);
+  gulp.watch(config.images.src, images);
+  gulp.watch(config.fonts.src, fonts);
 }

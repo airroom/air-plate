@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import changed from 'gulp-changed';
 import bs from 'browser-sync';
 
-gulp.task(images);
+export default images;
 
 function images() {
   return gulp.src(config.images.src)

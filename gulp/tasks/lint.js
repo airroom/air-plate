@@ -5,7 +5,7 @@ import gulp from 'gulp';
 import eslint from 'gulp-eslint';
 import fs from 'fs';
 
-gulp.task(lint);
+export default lint;
 
 function lint() {
   let lintStream;

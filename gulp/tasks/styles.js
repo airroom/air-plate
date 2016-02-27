@@ -12,12 +12,12 @@ import mqpacker from 'css-mqpacker';
 import errorHandler from '../util/error-handler.js';
 import bs from 'browser-sync';
 
-const processors = [
+const postCssProcessors = [
   autoprefixer({ browsers: ['> 10%'] }),
   mqpacker
 ];
 
-gulp.task(styles);
+export default styles;
 
 function styles() {
   return gulp.src(config.styles.src)
@@ -28,7 +28,7 @@ function styles() {
     outputStyle: global.isProd ? 'compressed' : 'nested',
     includePaths: config.styles.sassIncludePaths
   }))
-  .pipe(postcss(processors))
+  .pipe(postcss(postCssProcessors))
   .pipe(gulpIf(!global.isProd, sourcemaps.write()))
   .pipe(gulp.dest(config.styles.dest))
   .pipe(bs.stream());
