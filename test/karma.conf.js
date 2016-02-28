@@ -1,62 +1,54 @@
 'use strict';
 
 const istanbul = require('browserify-istanbul');
+const gulpConfig = require('../gulp/config.js');
+const karmaConfig = {};
 
-const karmaBaseConfig = {
-  basePath: '../',
+karmaConfig.basePath = '../';
 
-  frameworks: ['jasmine', 'browserify'],
+karmaConfig.frameworks = ['jasmine', 'browserify'];
 
-  preprocessors: {
-    'test/unit/**/*.spec.js': ['babel'],
-    'app/js/**/*.js': ['browserify']
-  },
+karmaConfig.preprocessors = { 'test/unit/**/*.spec.js': ['babel'] };
+karmaConfig.preprocessors[gulpConfig.scripts.src] = ['browserify'];
 
-  browsers: ['Chrome'],
+karmaConfig.browsers = ['Chrome'];
 
-  reporters: ['mocha', 'coverage'],
+karmaConfig.reporters = ['mocha', 'coverage'];
 
-  browserify: {
-    debug: true,
-    transform: [
-      ['babelify', { compact: false }],
-      'browserify-shim',
-      'aliasify',
-      'bulkify',
-      'browserify-ngannotate',
-      istanbul({
-        ignore: ['**/js/vendor/**'],
-        defaultIgnore: true,
-        instrumenterConfig: { embedSource: true } // Workaround for HTML coverage reporter
-      }),
-    ]
-  },
+karmaConfig.browserify = { debug: true, transform: [] };
+gulpConfig.browserify.transforms.forEach((transform) => {
+  karmaConfig.browserify.transform.push([transform.name, transform.options]);
+});
+karmaConfig.browserify.transform.push(
+  istanbul({
+    ignore: ['**/js/vendor/**'],
+    defaultIgnore: true,
+    instrumenterConfig: { embedSource: true }, // Workaround for HTML coverage reporter
+  })
+);
 
-  files: [
-    'app/js/index.js',
-    './node_modules/angular-mocks/angular-mocks.js',
-    'test/unit/**/*.spec.js'
-  ],
+karmaConfig.files = gulpConfig.browserify.entries.concat([
+  './node_modules/angular-mocks/angular-mocks.js',
+  'test/unit/**/*.spec.js',
+]);
 
-  coverageReporter: {
-    dir: 'reports/coverage',
-    reporters: [{
-        type: 'html',
-        subdir: 'html'
-      }, {
-        type: 'text'
-      }, {
-        type: 'text-summary'
-      }
-    ]
-  }
+karmaConfig.coverageReporter = {
+  dir: 'reports/coverage',
+  reporters: [{
+    type: 'html',
+    subdir: 'html',
+  }, {
+    type: 'text',
+  }, {
+    type: 'text-summary',
+  }],
 };
 
 const ciAdditions = {
-  browsers: ['Firefox']
+  browsers: ['Firefox'],
 };
 
-module.exports = function (config) {
+module.exports = function karmaConf(config) {
   const isCI = process.env.CI;
-  config.set(isCI ? Object.assign(karmaBaseConfig, ciAdditions) : karmaBaseConfig);
+  config.set(isCI ? Object.assign(karmaConfig, ciAdditions) : karmaConfig);
 };

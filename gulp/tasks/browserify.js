@@ -13,28 +13,18 @@ import source from 'vinyl-source-stream';
 import errorHandler from '../util/error-handler.js';
 import bundleLogger from '../util/bundle-logger.js';
 
-const BOOTSTRAP_UMD_FOLDER = './node_modules/bootstrap/dist/js/umd/';
-
-const BROWSERIFY_TRANSFORMS = [
-  {'name': 'babelify', 'options': { compact: false } },
-  {'name': 'browserify-shim', 'options': {} },
-  {'name': 'aliasify', 'options': {} },
-  {'name': 'bulkify', 'options': {} },
-  {'name': 'browserify-ngannotate', 'options': {} }
-];
-
 export default browserify;
 
 function browserify() {
   let bundler = brfy({
-    entries: config.scripts.browserify.entries,
+    entries: config.browserify.entries,
     debug: !global.isProd,
     cache: {},
     packageCache: {},
-    fullPaths: !global.isProd
+    fullPaths: !global.isProd,
   });
 
-  BROWSERIFY_TRANSFORMS.forEach((transform) =>
+  config.browserify.transforms.forEach((transform) =>
     bundler.transform(transform.name, transform.options)
   );
 
@@ -58,7 +48,7 @@ function browserify() {
       e.plugin = 'browserify';
       errorHandler.call(this, e);
     })
-    .pipe(source(config.scripts.browserify.fileName))
+    .pipe(source(config.browserify.fileName))
     .pipe(buffer())
     .pipe(gulpIf(!global.isProd, sourcemaps.init({ loadMaps: true })))
     .pipe(gulpIf(!global.isProd, sourcemaps.write()))
