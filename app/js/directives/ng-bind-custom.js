@@ -2,7 +2,7 @@ import angular from 'angular';
 
 export default {
   name: 'ngBindCustom',
-  fn: ngBindCustom,
+  def: ngBindCustom,
 };
 
 /* @ngInject */
