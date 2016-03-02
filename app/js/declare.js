@@ -8,8 +8,8 @@ function declare(module, fnMap, mapType) {
       return;
     }
 
-    if (item.fn && typeof item.fn === 'function') {
-      module[mapType](item.name, item.fn);
+    if (item.def) {
+      module[mapType](item.name, item.def);
       return;
     }
 

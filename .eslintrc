@@ -7,3 +7,8 @@ rules:
   "no-param-reassign": [2, {"props": false}]
   "prefer-arrow-callback": [1]
   "strict": [2, "global"]
+
+env:
+  "browser": true
+  "node": true
+  "jasmine": true

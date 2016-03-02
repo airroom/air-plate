@@ -7,7 +7,7 @@
     "start:dev": "gulp dev",
     "build": "gulp build",
     "test": "gulp test",
-    "test:dev": "gulp unit:dev"
+    "test:dev": "gulp test:dev"
   },
   "repository": {
     "type": "git",

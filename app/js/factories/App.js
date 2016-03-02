@@ -2,7 +2,7 @@ import SETTINGS from '../settings.js';
 
 export default {
   name: 'App',
-  fn: App,
+  def: App,
 };
 
 /* @ngInject */
