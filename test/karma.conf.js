@@ -8,6 +8,9 @@ karmaConfig.basePath = '../';
 
 karmaConfig.frameworks = ['jasmine', 'browserify'];
 
+karmaConfig.singleRun = true;
+karmaConfig.autoWatch = false;
+
 karmaConfig.preprocessors = { 'test/unit/**/*.spec.js': ['babel'] };
 karmaConfig.preprocessors[gulpConfig.scripts.src] = ['browserify'];
 

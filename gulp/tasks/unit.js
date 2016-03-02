@@ -1,14 +1,15 @@
 'use strict';
 
 import gulp from 'gulp';
-import {Server} from 'karma';
+import { Server } from 'karma';
+import views from './views.js';
 
-export default unit;
+export default gulp.series(views, unit);
 
 function unit(cb) {
   new Server({
-    configFile: process.cwd() + '/test/karma.conf.js',
-    singleRun: true
-  }).start();
-  cb();
+    configFile: `${process.cwd()}/test/karma.conf.js`,
+    autoWatch: global.isTestDev,
+    singleRun: !global.isTestDev,
+  }, cb).start();
 }
