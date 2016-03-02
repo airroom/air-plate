@@ -11,5 +11,6 @@ function unit(cb) {
     configFile: `${process.cwd()}/test/karma.conf.js`,
     autoWatch: global.isTestDev,
     singleRun: !global.isTestDev,
-  }, cb).start();
+  }).start();
+  cb();
 }
