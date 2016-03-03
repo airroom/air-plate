@@ -12,8 +12,8 @@ export default {
   },
 
   end() {
-    let taskTime = process.hrtime(startTime);
-    let prettyTime = prettyHrtime(taskTime);
+    const taskTime = process.hrtime(startTime);
+    const prettyTime = prettyHrtime(taskTime);
     gutil.log(gutil.colors.green('Bundled'), 'in', gutil.colors.magenta(prettyTime));
-  }
+  },
 };
