@@ -47,7 +47,6 @@
     "bootstrap": "^4.0.0-alpha.2",
     "browser-sync": "^2.11.1",
     "browserify": "^13.0.0",
-    "browserify-babel-istanbul": "^0.4.0",
     "browserify-ngannotate": "^2.0.0",
     "browserify-shim": "^3.8.12",
     "bulk-require": "^0.2.1",
