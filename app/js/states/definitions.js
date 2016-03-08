@@ -11,9 +11,15 @@ export default {
   answer: {
     url: '/resposta',
     templateUrl: 'answer.html',
+    resolve: {
+      answer: function theAnswerResolve() {
+        return 42;
+      },
+    },
+    controller: 'TheAnswerCtrl as theAnswer',
     data: {
-      title: 'A Resposta é ...',
-      description: 'Olha, talvez você fique um pouco chateado...',
+      title: 'A Resposta para a vida, o universo e tudo mais é ...',
+      description: 'Olha, só não fique chateado.',
     },
   },
 };

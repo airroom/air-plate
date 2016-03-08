@@ -26,7 +26,7 @@
     }
   }
 
-.air-plate-img {
+.a-p-img {
   animation-name: airPlateImg;
   animation-duration: 3s;
   /* animation-delay: 3s; */
@@ -34,4 +34,10 @@
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   /* animation-fill-mode: forwards; */
+}
+
+.a-p-blockquote {
+  text-align: center;
+  border: none;
+  margin: 0 auto;
 }
