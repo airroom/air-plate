@@ -20,3 +20,5 @@ build/
 
 # Temp Files
 templates.js
+
+rev-manifest.json

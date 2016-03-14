@@ -5,6 +5,8 @@ import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpIf from 'gulp-if';
+import rev from 'gulp-rev';
+import rename from 'gulp-rename';
 import brfy from 'browserify';
 import bs from 'browser-sync';
 import watchify from 'watchify';
@@ -31,7 +33,7 @@ function browserify() {
   if (!global.isProd) {
     bundler = watchify(bundler);
 
-    bundler.on('update', function watchifyOnUpdate() {
+    bundler.on('update', () => {
       bundleLogger.start();
       rebundle();
       bundleLogger.end();
@@ -53,7 +55,11 @@ function browserify() {
     .pipe(gulpIf(!global.isProd, sourcemaps.init({ loadMaps: true })))
     .pipe(gulpIf(!global.isProd, sourcemaps.write()))
     .pipe(gulpIf(global.isProd, uglify({ compress: { drop_console: true } })))
+    .pipe(gulpIf(global.isProd, rev()))
     .pipe(gulp.dest(config.scripts.dest))
+    .pipe(gulpIf(global.isProd, rename((path) => path.dirname = '/js/' )))
+    .pipe(gulpIf(global.isProd, rev.manifest({ merge: true })))
+    .pipe(gulpIf(global.isProd, gulp.dest('.')))
     .pipe(bs.stream());
   }
 }

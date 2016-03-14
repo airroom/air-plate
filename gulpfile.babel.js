@@ -12,6 +12,11 @@ gulp.task(build);
 gulp.task(test);
 gulp.task('test:dev', testDev);
 
+gulp.task('testingRev', (...args) => {
+  global.isProd = true;
+  return gulp.series(tasks.clean, tasks.browserify, tasks.views).apply(this, args);
+});
+
 function dev(...args) {
   global.isProd = false;
   return gulp.series(
