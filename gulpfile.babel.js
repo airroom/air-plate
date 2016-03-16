@@ -14,7 +14,7 @@ gulp.task('test:dev', testDev);
 
 gulp.task('testingRev', (...args) => {
   global.isProd = true;
-  return gulp.series(tasks.clean, tasks.browserify, tasks.styles, tasks.views).apply(this, args);
+  return gulp.series(tasks.clean, tasks.fonts, tasks.styles, tasks.views).apply(this, args);
 });
 
 function dev(...args) {
