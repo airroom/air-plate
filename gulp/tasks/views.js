@@ -15,7 +15,9 @@ import errorHandler from '../util/error-handler.js';
 export default views;
 
 function views() {
-  const revManifest = gulp.src('./rev-manifest.json');
+  const revManifest = global.isProd
+                      ? gulp.src('./rev-manifest.json')
+                      : null;
 
   const index = gulp.src(config.views.index)
   .pipe(changed(config.destDir))
